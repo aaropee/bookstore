@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
+<title>Books in the attic</title>
+</head>
+<body>
+	<h1>Bernard's Books</h1>
+	<h3>Edit book info:</h3>
+	<div>
+	<form th:object="${book}" th:action="@{../save}" action="#" method="post">
+		<div class="form-row">
+			<div class="form-group col-md-2">
+				<input class="form-control form-control-sm" type="hidden" th:field="*{id}"/>
+				<input class="form-control form-control-sm" placeholder="Title" type="text" th:field="*{title}"/>
+				<input class="form-control form-control-sm" placeholder="Author" type="text" th:field="*{author}"/>
+				<input class="form-control form-control-sm" placeholder="Year" type="text" th:field="*{year}"/>
+				<input class="form-control form-control-sm" placeholder="ISBN" type="text" th:field="*{isbn}"/>
+				<input class="form-control form-control-sm" placeholder="Price" type="text" th:field="*{price}"/>
+			</div>
+		</div>
+		<br/>
+		<input class="btn btn-success" type="submit" value="Save"></input>
+		<a class="btn btn-primary" th:href="@{/booklist}">Back</a>
+	</form>
+
+	</div>
+</body>
+</html>
