@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
+<title>Books: We got'em</title>
+</head>
+<body>
+	<div>
+		<h1>Bernard's Books</h1>
+		<h3>Add a new book</h3>
+		<form th:object="${book}" th:action="@{save}" action="#" method="post">
+			<div class="form-row">
+				<div class="form-group col-md-2">
+					<label for="title">Title</label>
+					<input class="form-control form-control-sm" placeholder="Name of the book" type="text" id="title" th:field="*{title}"/>
+					<label for="author">Author</label>
+					<input class="form-control form-control-sm" placeholder="Author's name" type="text" id="author" th:field="*{author}"/>
+					<label for="author">Year</label>
+					<input class="form-control form-control-sm" placeholder="When was it published" type="text" id="year" th:field="*{year}"/>
+				</div>
+			</div>
+			<div class="form-row">
+				<div class="form-group col-md-2">
+					<label for="isbn">ISBN code</label>
+					<input class="form-control form-control-sm" placeholder="ISBN - code" type="text" id="isbn" th:field="*{isbn}"/>
+					<label for="price">Price</label>
+					<input class="form-control form-control-sm" placeholder="Listed price" type="text" id="price" th:field="*{price}"/>
+				</div>
+			</div>
+			<br />
+			<input class="btn btn-success" type="submit" value="Save"></input>
+			<a class="btn btn-primary" th:href="@{/booklist}">Back</a>
+		</form>
+	</div>
+</body>
+</html>
