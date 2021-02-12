@@ -4,9 +4,15 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Book {
+	
+	@ManyToOne
+	@JoinColumn(name = "categoryid")
+	private Category cat;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -20,13 +26,14 @@ public class Book {
 	
 	public Book(){}
 
-	public Book(String title, String author, int year, String isbn, double price) {
+	public Book(String title, String author, int year, String isbn, double price, Category cat) {
 		super();
 		this.title = title;
 		this.author = author;
 		this.year = year;
 		this.isbn = isbn;
 		this.price = price;
+		this.cat = cat;
 	}
 	
 	public Long getId() {
@@ -67,6 +74,14 @@ public class Book {
 	public void setPrice(double price) {
 		this.price = price;
 	}
+	public Category getCat() {
+		return cat;
+	}
+
+	public void setCat(Category cat) {
+		this.cat = cat;
+	}
+
 	@Override
 	public String toString() {
 		return "Book [title=" + title + ", author=" + author + ", year=" + year + ", isbn=" + isbn

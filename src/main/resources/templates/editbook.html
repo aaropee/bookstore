@@ -2,7 +2,7 @@
 <html xmlns:th="http://thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
+<link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
 <title>Books in the attic</title>
 </head>
 <body>
@@ -13,11 +13,23 @@
 		<div class="form-row">
 			<div class="form-group col-md-2">
 				<input class="form-control form-control-sm" type="hidden" th:field="*{id}"/>
-				<input class="form-control form-control-sm" placeholder="Title" type="text" th:field="*{title}"/>
-				<input class="form-control form-control-sm" placeholder="Author" type="text" th:field="*{author}"/>
-				<input class="form-control form-control-sm" placeholder="Year" type="text" th:field="*{year}"/>
-				<input class="form-control form-control-sm" placeholder="ISBN" type="text" th:field="*{isbn}"/>
-				<input class="form-control form-control-sm" placeholder="Price" type="text" th:field="*{price}"/>
+				<label for="title">Title</label>
+					<input class="form-control form-control-sm" placeholder="Title" type="text" th:field="*{title}"/>
+				<label for="author">Author</label>
+					<input class="form-control form-control-sm" placeholder="Author" type="text" th:field="*{author}"/>
+				<label for="year">Published</label>
+					<input class="form-control form-control-sm" placeholder="Year" type="text" th:field="*{year}"/>
+				<label for="isbn">ISBN</label>
+					<input class="form-control form-control-sm" placeholder="ISBN" type="text" th:field="*{isbn}"/>
+				<label for="price">Price</label>
+					<input class="form-control form-control-sm" placeholder="Price" type="text" th:field="*{price}"/>
+				<label for="catlist">Category</label>
+					<select class="form-control" id="catlist" th:field="*{cat}">
+						<option th:each="cat: ${categories}"
+								th:value="${{cat.id}}"
+								th:text="${cat.name}"
+								></option>
+					</select>
 			</div>
 		</div>
 		<br/>

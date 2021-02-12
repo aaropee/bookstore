@@ -26,6 +26,12 @@
 					<input class="form-control form-control-sm" placeholder="ISBN - code" type="text" id="isbn" th:field="*{isbn}"/>
 					<label for="price">Price</label>
 					<input class="form-control form-control-sm" placeholder="Listed price" type="text" id="price" th:field="*{price}"/>
+					<label for="catlist">Category</label>
+					<select id="catlist" th:field="*{cat}" class="form-control">
+						<option th:each="cat: ${categories}"
+								th:value="${cat.id}"
+								th:text="${cat.name}"></option>
+					</select>
 				</div>
 			</div>
 			<br />
