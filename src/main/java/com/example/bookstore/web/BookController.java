@@ -1,6 +1,7 @@
 package com.example.bookstore.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,6 +20,12 @@ public class BookController {
 	
 	@Autowired
 	private CategoryRepository crepo;
+	
+	// Login page
+	@RequestMapping(value="/login")
+	public String login() {
+		return "login";
+	}
 	
 	// Listing all books
 	@RequestMapping(value = {"/", "booklist"})
@@ -43,7 +50,9 @@ public class BookController {
 	}
 	
 	// Delete existing book
+	// Don't allow user's without ADMIN - role to do that
 	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
+	@PreAuthorize("hasRole('ADMIN')")
 	public String deleteBook(@PathVariable("id")Long id, Model model) {
 		brepo.deleteById(id);
 		return "redirect:../booklist";
@@ -56,5 +65,7 @@ public class BookController {
 		model.addAttribute("categories", crepo.findAll());
 		return "editbook";
 	}
+	
+
 	
 }
