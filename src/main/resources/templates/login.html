@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
-<title>Insert title here</title>
+<title>Login</title>
 </head>
 <body>
 	<div th:if="${param.error}">
@@ -21,5 +21,8 @@
 			<input class="btn btn-primary" type="submit" value="Sign In"/>
 		</div>
 	</form>
+	<br>
+	<h4>New user?</h4>
+	<a th:href="@{/signup}"> Create account </a>
 </body>
 </html>

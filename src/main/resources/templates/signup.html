@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" />
+<title>Sign up</title>
+</head>
+<body>
+<div class="container">
+	<h2>Sign up</h2>
+	<div class="col-md-4">
+		<form th:object="${signupform}" th:action="@{/saveuser}" action="#" method="post">
+			<div>
+				<label>Username: <input type="text" th:field="*{username}" class="form-control"></label>
+				<p th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Invalid username</p>
+			</div>
+			<div>
+				<label>Email: <input type="text" th:field="*{email}" class="form-control"></label>
+				<p th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Invalid Email-address</p>
+			</div>
+			<div>
+				<label>Password: <input type="password" th:field="*{password}" class="form-control"></label>
+				<p th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Invalid Password</p>
+			</div>
+			<div>
+				<label>Confirm password: <input type="password" th:field="*{passwordCheck}" class="form-control"></label>
+				<p th:if="${#fields.hasErrors('passwordCheck')}" th:errors="*{passwordCheck}">Passwords did not match, try again</p>
+			</div>
+			
+			<input type="submit" class="btn btn-success" value="Sign up"></input>
+		</form>
+	</div>
+</div>
+</body>
+</html>

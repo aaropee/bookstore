@@ -12,7 +12,6 @@ import com.example.bookstore.model.Book;
 import com.example.bookstore.model.BookRepository;
 import com.example.bookstore.model.Category;
 import com.example.bookstore.model.CategoryRepository;
-import com.example.bookstore.model.User;
 import com.example.bookstore.model.UserRepository;
 
 @SpringBootApplication
@@ -28,6 +27,9 @@ public class BookstoreApplication {
 		return (args) -> {
 			log.info("Save a few books");
 			
+			// Empty populated database
+			crepo.deleteAll();
+			
 			// Save some categories
 			crepo.save(new Category("Encyclopedia"));
 			crepo.save(new Category("Design"));
@@ -39,10 +41,10 @@ public class BookstoreApplication {
 			brepo.save(new Book("Universal Principles of Design", "William Lidwell", 2010, "1-59253-587-9", 25, crepo.findByName("Design").get(0)));
 			
 			// Save two users
-			User user1 = new User("user", "$2a$06$3jYRJrg0ghaaypjZ/.g4SethoeA51ph3UD4kZi9oPkeMTpjKU5uo6", "USER");
-			User user2 = new User("admin", "$2a$10$0MMwY.IQqpsVc1jC8u7IJ.2rT8b0Cd3b3sfIBGV2zfgnPGtT4r0.C", "ADMIN");
-			urepo.save(user1);
-			urepo.save(user2);
+//			User user1 = new User("user", "$2a$06$3jYRJrg0ghaaypjZ/.g4SethoeA51ph3UD4kZi9oPkeMTpjKU5uo6", "USER");
+//			User user2 = new User("admin", "$2a$10$0MMwY.IQqpsVc1jC8u7IJ.2rT8b0Cd3b3sfIBGV2zfgnPGtT4r0.C", "ADMIN");
+//			urepo.save(user1);
+//			urepo.save(user2);
 			
 			//Fetch all books
 			for (Book book : brepo.findAll()) {

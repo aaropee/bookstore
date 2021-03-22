@@ -2,6 +2,8 @@ package com.example.bookstore;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,5 +39,20 @@ public class RepositoryTests {
 		assertThat(cat.getId()).isNotNull();
 		
 	}
+	
+	@Test
+	public void findByTitleReturnAuthor() {
+		List<Book> books = brepo.findByTitle("Äänityön Kivijalka");
+		assertThat(books).hasSize(1);
+		assertThat(books.get(0).getAuthor()).isEqualTo("Jukka Laaksonen");
+	
+	}
+	
+	@Test
+	public void deleteBook() {
+		brepo.deleteAll();
+		assertThat(brepo.count()).isEqualTo(0);
+	}
+	
 
 }

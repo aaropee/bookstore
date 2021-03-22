@@ -5,7 +5,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Table(name = "users")
 @Entity
 public class User {
 	
@@ -16,6 +18,9 @@ public class User {
 	
 	@Column(name = "username", nullable = false, unique = true)
 	private String username;
+	
+	@Column(name = "email", nullable = false, unique = true)
+	private String email;
 	
 	@Column(name = "password", nullable = false)
 	private String passwordHash;
@@ -28,9 +33,10 @@ public class User {
 		
 	}
 	
-	public User(String username, String passwordHash, String role) {
+	public User(String username, String email, String passwordHash, String role) {
 		super();
 		this.username = username;
+		this.email = email;
 		this.passwordHash = passwordHash;
 		this.role = role;
 	}
@@ -51,6 +57,14 @@ public class User {
 
 	public void setUsername(String username) {
 		this.username = username;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public String getPasswordHash() {
